@@ -18,7 +18,7 @@ namespace eclipse::hacks::Level {
 
     REGISTER_HACK(ForcePlatformer)
 
-    class $modify(ForcePlatformerPLHook, GJBaseGameLayer) {
+    class $modify(ForcePlatformerPLHook, PlayLayer) {
         ADD_HOOKS_DELEGATE("level.forceplatformer")
 
         void loadLevelSettings() {
