@@ -2,7 +2,7 @@
 #include <modules/hack/hack.hpp>
 #include <modules/config/config.hpp>
 
-#include <Geode/modify/PlayLayer.hpp>
+#include <Geode/modify/GJBaseGameLayer.hpp>
 
 namespace eclipse::hacks::Level {
 
@@ -18,11 +18,11 @@ namespace eclipse::hacks::Level {
 
     REGISTER_HACK(ForcePlatformer)
 
-    class $modify(ForcePlatformerPLHook, PlayLayer) {
+    class $modify(ForcePlatformerGJBGLHook, GJBaseGameLayer) {
         ADD_HOOKS_DELEGATE("level.forceplatformer")
 
         void loadLevelSettings() {
-            if(!PlayLayer::get() || m_levelSettings->m_platformerMode) return GJBaseGameLayer::loadLevelSettings(); 
+            if(!PlayLayer::get() || m_levelSettings->m_platformerMode || LevelEditorLayer::get()) return GJBaseGameLayer::loadLevelSettings(); 
 
 
             m_levelSettings->m_platformerMode = true;
